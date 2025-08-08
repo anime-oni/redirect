@@ -16,3 +16,21 @@ body {
 		background-position: 0% 50%;
 	}
 }
+
+.box {
+  background-color: #2b2d30;
+  border: 2px solid black;
+  padding: 20px;
+  width: 300px;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
