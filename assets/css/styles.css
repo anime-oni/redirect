@@ -4,6 +4,10 @@ h1 {
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
+h3 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
 body {
      background: linear-gradient(-45deg, #222831, #31363F, #76ABAE, #EEEEEE);
       background-size: 400% 400%;
