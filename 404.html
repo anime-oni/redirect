@@ -1,56 +1,52 @@
 <!DOCTYPE html>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles" rel="stylesheet">
-<script src="assets/js/PureSnow.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-.snowflake {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(white, white);
-  border-radius: 50%;
-}
- h1 {
-  font-family: "Rubik Bubbles", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-  html {
-  font-family: Tahoma, sans-serif;
-  background-color: #BFF4ff;
-}
- /* unvisited link */
-a:link {
-  color: DarkSlateBlue;
-}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link Not Found</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="box" id="content">
+    <h1>404 - Link Not Found</h1>
+    <h3 id="message">The link you're looking for doesn't exist.</h3>
+    <p>If you believe this is an error, please check your URL or go back to the <a href="/">homepage</a>.</p>
+    <a href="/" class="home-btn">← Go back home</a>
+  </div>
 
-/* visited link */
-a:visited {
-  color: SlateBlue;
-}
+  <script>
+    (function() {
+      // Load links.json
+      fetch('links.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load links');
+          return res.json();
+        })
+        .then(links => {
+          // Parse URL for short code
+          const pathParts = window.location.pathname.split('/').filter(Boolean);
+          const shortCode = pathParts.pop();
 
-  .header {
-  padding: 60px;
-  text-align: center;
-  color: #FEBC34;
-  font-size: 30px;
-}
-</style>
-<div id="snow"></div>
-<html>
-<center>
-<div class="header">
- <h1>404 - Can't Find Your Page!</h1>
-</div>
-<p> It seems that our advanced penguin fishing technology can't find this page!</p>
-   <img src="https://us-east-1.tixte.net/uploads/ddeveloper.discowd.com/Untitled480_20250419190651.png" width="300" length="300" alt="Penguin Fishing">
-</center>
+          if (shortCode && links[shortCode]) {
+            // Show redirect message then redirect
+            const messageDiv = document.getElementById('content');
+            messageDiv.innerHTML = `
+              <h1>Redirecting you to ${links[shortCode]}!</h1>
+              <h3>If this fails, <a href="${links[shortCode]}">click here</a>.</h3>
+            `;
+            setTimeout(() => {
+              window.location.href = links[shortCode];
+            }, 1000);
+          } else {
+            // Not found, stay on this page
+            document.getElementById('message').textContent = "The link you're looking for doesn't exist.";
+          }
+        })
+        .catch(() => {
+          // Failed to load links.json
+          document.getElementById('message').textContent = "Error loading links.";
+        });
+    })();
+  </script>
+</body>
 </html>
-<!--Embed Stuff-->
-  <meta name="theme-color" content="#ff4a4a">
-  <meta property="og:title" content="Error: 404" />
-  <meta property="og:description" content="Sorry this page doesn’t exist.">
-  <meta property="og:image" content="https://cdn.discordapp.com/emojis/1321152950944399457.png" />
-<!--End lol-->
