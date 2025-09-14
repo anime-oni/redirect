@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="refresh" content="8; url=https://www.wendys.com/404" />
-  <head>
-    <link rel="stylesheet" href="assets/css/styles.css">
-  </head>
-  <body>
-   <div class="box">
-     <h1>Hello,</h1> <br>
-     <h3>This is my new website for link redirection. Also this is a Wendy's!</h3>
-   </div> 
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Shortener Dashboard</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="box">
+    <h1>Shortened Links</h1>
+    <div id="links-container">Loading...</div>
+  </div>
+
+  <script>
+    // Load links.json and display links
+    const container = document.getElementById('links-container');
+    fetch('links.json')
+      .then(res => res.json())
+      .then(links => {
+        container.innerHTML = '';
+        for (const [code, url] of Object.entries(links)) {
+          const linkDiv = document.createElement('div');
+          linkDiv.innerHTML = `
+            <p><b>${window.location.origin}/${code}</b> → <a href="${url}" target="_blank">${url}</a></p>
+            <p>
+              <a href="${window.location.origin}/${code}">Visit</a> | 
+              <a href="${url}" target="_blank">Direct Link</a>
+            </p>
+            <hr/>
+          `;
+          container.appendChild(linkDiv);
+        }
+      })
+      .catch(() => {
+        container.innerHTML = 'Failed to load links.';
+      });
+  </script>
+</body>
 </html>
