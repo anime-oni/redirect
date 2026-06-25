@@ -16,10 +16,10 @@
       const link = 'https://example.com'
       document.getElementById("title").innerHTML = name + '!';
       document.getElementById("error").innerHTML = `If this fails please press <a href="${link}">here</a>`
-    //  setTimeout(web, 700000000)
-/*      function web() {
-        location.href = link;
-      }*/
+     setTimeout(web, 150)
+      function web() {
+        location.replace(link);
+      }
     </script>
   </body>
 </html>
