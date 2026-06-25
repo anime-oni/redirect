@@ -52,10 +52,10 @@ body {
 }
 
 a:link {
-  color: DeepSkyBlue;
+  color: #00bfff;
   text-decoration: none;
 }
 
 a:hover {
-  color: DodgerBlue;
+  color: #02B2ED;
 }
