@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/styles.css">
   </head>
   <body>
-   <div class="box">
-     <h1>Redirecting you to <div id='title'>---</div>!</h1>
-     <h3 id="error">If this fails please press ----</h3>
-   </div> 
-  <script>
-   const name = 'Test'
-   const link = 'https://example.com'
-   document.getElementById("title").innerHTML = name;
-   document.getElementById("error").innerHTML = `If this fails please press <a href="${link}">here</a>`
-    setTimeout(web, 7)
-    function web() {
-  location.href = link;
-   }
-  </script>
+    <div class="box">
+      <h1>Redirecting you to <div id='title'>---</div>!</h1>
+      <h3 id="error">If this fails please press ----</h3>
+    </div> 
+    <script>
+      const name = 'Test'
+      const link = 'https://example.com'
+      document.getElementById("title").innerHTML = name;
+      document.getElementById("error").innerHTML = `If this fails please press <a href="${link}">here</a>`
+      setTimeout(web, 7)
+      function web() {
+        location.href = link;
+      }
+    </script>
   </body>
 </html>
